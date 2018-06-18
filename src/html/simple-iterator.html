@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Simple iterator</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+    <section>
+        <figure>
+            <figcaption>
+                <b>Simple iterator behavior</b></figcaption>
+            <pre>
+                <code>
+                    const describe = (obj) => Object.entries(obj)
+
+                    const people = [
+                        'John',
+                        'Mary',
+                        'Peter'
+                    ]
+                        
+                    const iterator = people[Symbol.iterator]()
+                        
+                    describe(iterator.next()) //output: { value: 'John', done: false }
+                    describe(iterator.next()) //output: { value: 'Mary', done: false }
+                    describe(iterator.next()) //output: { value: 'Peter', done: false }
+                    describe(iterator.next()) //output: { value: undefined, done: true }
+                </code>
+            </pre>
+            <label>see output in your browser's console :)</label>
+        </figure>
+    </section>
+
+    <script src="../js/simple-iterator.js"></script>
+</body>
+
+</html>

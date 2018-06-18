@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>for...in vs for...of</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+    <section>
+        <figure>
+            <figcaption>
+                <b>for...in loop</b> (iterate over object keys)</figcaption>
+            <pre>
+                <code>
+                    const str = 'abcdefg'
+                    const output = document.getElementById('for-in-output')    
+
+                    for (item in str)
+                        output.innerHTML += `${item}`
+                </code>
+            </pre>
+            <label id="for-in-output" class="output">output: </label>
+        </figure>
+    </section>
+    <section>
+        <figure>
+            <figcaption>
+                <b>for...of loop</b> (iterate over values)</figcaption>
+            <pre>
+                <code>
+                    const str = 'abcdefg'
+                    const output = document.getElementById('for-of-output')    
+        
+                    for (item of str)
+                        output.innerHTML += `${item}`
+                </code>
+            </pre>
+            <label id="for-of-output" class="output">output: </label>
+        </figure>
+    </section>
+
+    <script src="../js/forin-vs-forof.js"></script>
+</body>
+
+</html>

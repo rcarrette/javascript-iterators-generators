@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Custom iterator</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+    <section>
+        <figure>
+            <figcaption>
+                <b>Custom iterator</b> to generate data based on a random condition</figcaption>
+            <pre>
+                <code>
+                    const getRandomInt = (max) => {
+                        return Math.floor(Math.random() * Math.floor(max))
+                    }
+                        
+                    const getRandomArrayItem = (array) => {
+                        return array[getRandomInt(array.length)]
+                    }
+                        
+                    const people = ['John', 'Mary', 'Peter']
+                    const sizes = ['small', 'intermediate', 'tall']
+                        
+                    const getRandomPeopleDescription = () => {
+                        return `${getRandomArrayItem(people)} is ${getRandomArrayItem(sizes)}`
+                    }
+                        
+                    const peopleGroup = {
+                        [Symbol.iterator]: () => {
+                            return {
+                                next: () => {
+                                    const enoughPeopleReturned = getRandomInt(10) > 5
+                                    return !enoughPeopleReturned ? {
+                                        value: getRandomPeopleDescription(),
+                                        done: false
+                                    } : { done: true }
+                                }
+                            }
+                        }
+                    }
+                        
+                    const output = document.getElementById('output')
+                        
+                    for (const item of peopleGroup) {
+                        output.innerHTML += `${item}`
+                    }
+                </code>
+            </pre>
+            <label id="output" class="output">output (refresh page to randomly new items):<br/></label>
+        </figure>
+    </section>
+
+    <script src="../js/custom-iterator.js"></script>
+</body>
+
+</html>
